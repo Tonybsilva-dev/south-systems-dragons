@@ -1,6 +1,16 @@
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Routes } from './routes';
+import GlobalStyles from './styles/global';
 
-function App() {
-  return <h1>Vite Component</h1>
+const App: React.FC = () => {
+  return (
+    <BrowserRouter>
+      <Routes />
+
+      <GlobalStyles />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
