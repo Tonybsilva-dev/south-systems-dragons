@@ -3,15 +3,26 @@ import { api } from '../service/api';
 
 export default function useDragon() {
 
-    const [dragons, setDragons] = useState([]);
+    const 
+    [dragons, setDragons] = useState([]),
+    [filterDone, setFilterDone] = useState(false),
+    [loading, setLoading] = useState(false);
+
 
 
     async function listDragons() {
+
+        setFilterDone(false);
+        setLoading(true);
+
         try {
             const { data } = await api.get('/dragon');
-            return data as Object;
+            setDragons(data);
+            setFilterDone(true);
+            setLoading(false);
         } catch (error) {
             console.log(error);
+            setLoading(false);
         }
     }
 
@@ -33,6 +44,7 @@ export default function useDragon() {
 
     return {
         listDragons, 
-        dragons
+        dragons,
+        filterDone
     }
 }

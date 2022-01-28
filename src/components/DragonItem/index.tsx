@@ -1,14 +1,19 @@
 import { Container, DragonInfo } from './styles';
+import logoDragon from '../../assets/images/logo-dragon.jpg'
 
-interface propsDragon {
-  dragon: any
+interface Dragon {
+  id: number;
+  name: string;
+  type: string;
+  histories: [];
 }
 
 function DragonItem({ dragon }: any) {
+
   return (
     <Container>
       <header>
-        <img src="#" alt="#" />
+        <img src={logoDragon} alt="#" />
 
         <DragonInfo>
           <strong>{dragon.name}</strong>
@@ -16,7 +21,7 @@ function DragonItem({ dragon }: any) {
         </DragonInfo>
       </header>
 
-      <p>{history}</p>
+      <p>{dragon.histories.length > 0 ? dragon.histories.map((history: string) => '*' + history ) : ''} </p>
       <a href="#"> Editar dragao </a>
     </Container>
   );
