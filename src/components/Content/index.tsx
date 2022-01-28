@@ -1,29 +1,26 @@
 import { useEffect, useState } from 'react';
 import useDragon from '../../hooks/useDragon';
+import DragonItem from '../DragonItem';
 import { Container } from './styles';
 
 
 
 
 const Content: React.FC = () => {
-  const [dragons, setDragons] = useState('');
-  const {listDragons} = useDragon();
+  const {listDragons, filterDone, dragons} = useDragon();
 
   useEffect(() => {
-    const getData = async (): Promise<
-
-
-  }, [])
-
+    listDragons();
+  }, []);
 
   return (
     <Container>
-      {/* <ul>    
-         {dragons.map( dragon => {
-           <DragonItem key={dragon.id} dragon={dragon}  />
-         } )}
-
-      </ul> */}
+      <ul>   
+        {filterDone && dragons.length > 0 ? 
+          dragons.map((dragon: any) => (
+            <DragonItem key={dragon.id}  dragon={dragon} />
+        ))  : 'Sem dragões a serem exibidos'}
+      </ul>
     </Container>
   );
 };
