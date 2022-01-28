@@ -1,10 +1,14 @@
-import { Container } from './styles';
+import Content from '../../components/Content';
+import Sidebar from '../../components/Sidebar';
+import { App } from './styles';
+
 
 function SignIn() {
   return (
-    <Container>
-      <h1>SignIn</h1>
-    </Container>
+    <App>
+      <Sidebar />
+      <Content />
+    </App>
   );
 };
 
